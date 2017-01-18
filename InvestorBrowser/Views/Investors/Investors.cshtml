@@ -13,7 +13,6 @@
     <div class="well">
         @using (Html.BeginForm("FilterDate", "Investors", FormMethod.Post,
                     new { enctype = "multipart/form-data" }))
-
         {
 
             @Html.LabelFor(model => model.DateFrom, htmlAttributes: new { @class = "control-label" })
