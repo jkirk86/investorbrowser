@@ -33,7 +33,7 @@ namespace InvestorBrowser.App_Start
         private static void InitializeContainer(Container container)
         {
             // repositories
-            container.Register<InvestorRepository>(Lifestyle.Scoped);
+            container.Register<IInvestorRepository, InvestorRepository>(Lifestyle.Scoped);
 
             // db context
             container.Register<InvestorBrowserContext>(Lifestyle.Singleton);

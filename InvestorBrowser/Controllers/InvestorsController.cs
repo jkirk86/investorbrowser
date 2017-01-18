@@ -13,10 +13,10 @@ namespace InvestorBrowser.Controllers
 {
     public class InvestorsController : Controller
     {
-        private readonly InvestorRepository _investorRepository;
+        private readonly IInvestorRepository _investorRepository;
         private readonly IMapper _mapper;
 
-        public InvestorsController(InvestorRepository investorRepository, IMapper mapper)
+        public InvestorsController(IInvestorRepository investorRepository, IMapper mapper)
         {
             _investorRepository = investorRepository;
             _mapper = mapper;

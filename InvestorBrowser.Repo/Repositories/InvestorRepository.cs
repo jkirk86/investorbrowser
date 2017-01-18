@@ -8,7 +8,7 @@ using InvestorBrowser.Repo.Models;
 
 namespace InvestorBrowser.Repo.Repositories
 {
-    public class InvestorRepository
+    public class InvestorRepository : IInvestorRepository
     {
         private readonly InvestorBrowserContext _investorBrowserContext;
 

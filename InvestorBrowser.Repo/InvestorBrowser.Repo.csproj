@@ -55,6 +55,7 @@
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\Investor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\IInvestorRepository.cs" />
     <Compile Include="Repositories\InvestorRepository.cs" />
   </ItemGroup>
   <ItemGroup>
