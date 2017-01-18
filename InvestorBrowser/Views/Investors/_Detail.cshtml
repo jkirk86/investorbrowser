@@ -1,0 +1,56 @@
+﻿
+@model List<InvestorBrowser.Models.AccountViewModel>
+
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 class="modal-title">Accounts for @ViewBag.InvestorName</h3>
+            <p>Accounts totalling: @ViewBag.SumOfAllAccounts.ToString("C2")</p>
+        </div>
+
+
+        <div>
+
+            <table class="table table-striped">
+                <tr>
+                    <th>
+                        @Html.Raw("Account Id")
+                    </th>
+                    <th>
+                        @Html.Raw("Amount Held")
+                    </th>
+                    <th>
+                        @Html.Raw("Type")
+                    </th>
+                    <th>
+                        @Html.Raw("Date Created")
+                    </th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AccountId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AmountHeld)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Type)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DateCreated)
+                        </td>
+                    </tr>
+                }
+            </table>
+            
+            <div style="float: right">
+                <img src="~/Images/cleverLogo.png" />
+            </div>
+
+        </div>
+    </div><!-- /.modal-content -->
+</div><!-- /.modal-dialog -->

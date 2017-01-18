@@ -1,0 +1,98 @@
+﻿@*@model IEnumerable<InvestorBrowser.Models.InvestorViewModel>*@
+@model InvestorBrowser.Models.InvestorsPageViewModel
+
+@{
+    ViewBag.Title = "Investors";
+}
+
+<h2>Investors</h2>
+<br />
+
+<div class="col-md-10">
+
+    <div class="well">
+        @using (Html.BeginForm("FilterDate", "Investors", FormMethod.Post,
+                    new { enctype = "multipart/form-data" }))
+
+        {
+
+            @Html.LabelFor(model => model.DateFrom, htmlAttributes: new { @class = "control-label" })
+            @Html.EditorFor(model => model.DateFrom, new { htmlAttributes = new { @class = "form-control", @id = "from", @data_language = "en" } })
+
+            @Html.LabelFor(model => model.DateTo, htmlAttributes: new { @class = "control-label" })
+            @Html.EditorFor(model => model.DateTo, new { htmlAttributes = new { @class = "form-control", @id = "to", @data_language = "en" } })
+            <br />
+            <input type="submit" class="btn btn-default" value="Filter Date" />
+            @Html.ActionLink("Clear","Index", new {@class="btn btn-default"})
+        }
+    </div>
+
+    <br/>
+
+    <table class="table table-striped">
+        <tr>
+            <th>
+                @Html.Raw("Investor Name")
+            </th>
+            <th>
+                @Html.Raw("Date Created")
+            </th>
+            <th>
+                @Html.Raw("No Accounts")
+            </th>
+            <th>
+                @Html.Raw("Accounts Total")
+            </th>
+            <th>
+            </th>
+        </tr>
+
+        @foreach (var item in Model.Investors)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateCreated)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumberOfAccounts)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AccountsTotal)
+                </td>
+
+                <td>
+                    @Ajax.ActionLink("Accounts", "Detail", new { id = item.InvestorId }, new AjaxOptions { UpdateTargetId = "modal", OnSuccess = "$('#modal').modal('show');" }, new { @class = "btn btn-default btn-sm" })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+
+<div class="col-md-2">
+
+</div>
+
+<div class="clearfix visible-md">
+
+</div>
+
+
+
+@section Scripts
+{
+    <script type="text/javascript">
+        
+        $(function () {
+
+            //if not html5, use jquery-ui datepicker
+   
+            //$("#from").datepicker({ dateFormat: 'dd/mm/yy' });
+            //$("#to").datepicker({ dateFormat: 'dd/mm/yy' });
+
+        });
+    </script>
+}
